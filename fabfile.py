@@ -3,55 +3,53 @@ import fabric.contrib.project as project
 import os
 
 # Local path configuration (can be absolute or relative to fabfile)
-env.input_path = 'content'
+#env.input_path = 'docs'
+env.deploy_path = 'site'
+#DEPLOY_PATH = env.deploy_path
 
-env.deploy_path = 'output'
-DEPLOY_PATH = env.deploy_path
 # Remote server configuration
 #production = 'root@localhost:22'
 #dest_path = '/var/www'
-
-# Rackspace Cloud Files configuration settings
-#env.cloudfiles_username = 'my_rackspace_username'
-#env.cloudfiles_api_key = 'my_rackspace_api_key'
-#env.cloudfiles_container = 'my_cloudfiles_container'
 
 #def clean():
 #    if os.path.isdir(DEPLOY_PATH):
 #        local('rm -rf {deploy_path}/*'.format(**env))
 #        #local('mkdir {deploy_path}'.format(**env))
+#    local('pelican {input_path} -o {deploy_path} -s pelicanconf.py'.format(**env))
 
 def build():
-    local('pelican {input_path} -o {deploy_path} -s pelicanconf.py'.format(**env))
+    local('mkdocs build')
 
-#def rebuild():
-#    clean()
-#    build()
-
-#def regenerate():
-#    local('pelican -r -s pelicanconf.py')
-#
 def serve():
-    local('cd {deploy_path} && python -m SimpleHTTPServer'.format(**env))
+    local('mkdocs serve')
 
 def reserve():
     build()
     serve()
 
-#def preview():
-#    local('pelican -s publishconf.py')
-
-def pub2github():
+def pub2hub():
+    build()
     local('cd {deploy_path} && '
             'pwd && '
-            #'git pu && '
+            'git st && '
             'git add --all . && '
-            #'git st && '
-            'git ci -am "upgraded from local. @ZoomQuiet" && '
-            #'git pu cafe gitcafe-page '
+            'git ci -am "upgraded in local. @MBP111216ZQ" && '
             'git pu && '
             'pwd '.format(**env)
           )
+
+#env.qiniu = '/opt/bin/7niu_package_darwin_amd64/qrsync'
+#env.qiniu_conf = '../7niu-pycon.json'
+#env.qiniu_path = '../7niu.pyconcn'
+#def put7niu():
+#    build()
+#    local('cd {qiniu_path} && '
+#            'pwd && '
+#            'python gen4idx.py ./ footer-7niu.html 2014 && '
+#            '{qiniu} -skipsym {qiniu_conf}&& '
+#            'pwd '.format(**env)
+#          )
+
 
 #def cf_upload():
 #    rebuild()

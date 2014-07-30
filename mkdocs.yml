@@ -1,0 +1,24 @@
+site_name: CodinGirls
+site_description: 程序媛乐松会
+site_author: support@pythongirls.org
+site_url: http://codingirls.org/
+theme_dir: _theme/united
+theme: united
+
+repo_url: https://github.com/CodinGirls/codingirls.main
+
+pages:
+- ['index.md', 'Home']
+- ['proposals.md', '报名']
+- ['schedule/beijing.md', '日程', '北京']
+- ['schedule/shanghai.md', '日程', '上海']
+- ['schedule/zhuhai.md', '日程', '珠海']
+- ['schedule/hangzhou.md', '日程', '杭州']
+- ['schedule/shuzhou.md', '日程', '苏州']
+- ['sponsor.md', '赞助商']
+- ['volunteer.md', '志愿者']
+- ['history/2011.md', '往届', '2011/上海']
+- ['history/2012.md', '往届', '2012/京沪']
+- ['history/2013.md', '往届', '2013/京沪珠']
+
+#copyright: Copyright &copy; 2014, <a href="http://weibo.com/pyconcn">PyConChina</a>.
