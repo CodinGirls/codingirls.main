@@ -27,13 +27,13 @@ def reserve():
     build()
     serve()
 
-def pub2hub():
+def pu2pages():
     build()
     local('cd {deploy_path} && '
             'pwd && '
             'git st && '
             'git add --all . && '
-            'git ci -am "upgraded in local. @MBP111216ZQ" && '
+            'git ci -am "upgrad from local. @MBP111216ZQ" && '
             'git pu && '
             'pwd '.format(**env)
           )
